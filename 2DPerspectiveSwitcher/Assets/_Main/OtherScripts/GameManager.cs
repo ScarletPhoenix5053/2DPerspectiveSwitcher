@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            SetAlternatingCamPersp(PerspectiveSwitcher.CubePerspective.front, PerspectiveSwitcher.CubePerspective.back);
+            SetRandomCamPersp();
         }
     }
 

@@ -15,6 +15,8 @@ namespace Sierra.PerspectiveSwitcher2D
         public BoolCube DeniedPerspectives = new BoolCube();
         public bool FreezeTimeOnSwtich;
         public float SmoothTransitionDuration = 0.5f;
+
+        private CubePerspective _newPerspective;
         
         public enum CubePerspective
         {
@@ -28,11 +30,14 @@ namespace Sierra.PerspectiveSwitcher2D
 
         public void SetPerspective(CubePerspective newPerspective)
         {
+            // Validate perspective
             if (newPerspective == CurrentPerspective) return;
             if (!PerspectiveAllowed(newPerspective)) return;
 
-            SetOrientationRefrenceTo(newPerspective);
+            // Update all the things
+            SetNewPerspectiveTo(newPerspective);            
             UpdateCamera();
+            SetCurrentPerspectiveTo(newPerspective);
         }
         public void DenyPerspective(BoolCube boolCube)
         {
@@ -107,29 +112,78 @@ namespace Sierra.PerspectiveSwitcher2D
 
         private void UpdateCamera()
         {
-            switch (CurrentPerspective)
-            {/*
-                case CubePerspective.top:
-                    Camera.ArcInterpolateTo(Camera.LookAt.position + Vector3.up * Camera.DistToSubject, new Vector3(0,-1,1), SmoothTransitionDuration);
-                    break;
-                case CubePerspective.bottom:
-                    Camera.ArcInterpolateTo(Camera.LookAt.position + Vector3.down * Camera.DistToSubject, SmoothTransitionDuration);
-                    break;
-                case CubePerspective.left:
-                    Camera.ArcInterpolateTo(Camera.LookAt.position + Vector3.left * Camera.DistToSubject, SmoothTransitionDuration);
-                    break;
-                case CubePerspective.right:
-                    Camera.ArcInterpolateTo(Camera.LookAt.position + Vector3.right * Camera.DistToSubject, SmoothTransitionDuration);
-                    break;*/
-                case CubePerspective.back:
-                    Camera.PivotTo(Camera.LookAt.position + Vector3.back * Camera.DistToSubject, new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
-                    break;
-                case CubePerspective.front:
-                    Camera.PivotTo(Camera.LookAt.position + Vector3.forward * Camera.DistToSubject, new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
-                    break;
-                default:
-                    break;
+            var target = Camera.LookAt.position;
+            var dist = Camera.DistToSubject;
+
+            if (TransitionIs180())
+            {
+                // If transition is 180 degrees: offset target to get desired direction
+                // add option to default to clockwise/anticlockwise/overthetop motion?
+
+                // DEFAULT ROTATIONS, based on clockwise rotation, looking from behind/top
+                switch (CurrentPerspective)
+                {
+                    case CubePerspective.top:
+                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0.1f,0,0), SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.bottom:
+                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.left:
+                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0, 0, -0.1f), SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.right:
+                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0, 0, 0.1f), SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.back:
+                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0.1f, 0, 0), SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.front:
+                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
+                        break;
+                    default:
+                        break;
+                }
             }
+            else 
+            {
+                // If transition is 90 degrees: do not offset target
+                switch (_newPerspective)
+                {
+                    case CubePerspective.top:
+                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.bottom:
+                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.left:
+                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.right:
+                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.back:
+                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        break;
+                    case CubePerspective.front:
+                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+        }
+        private bool TransitionIs180()
+        {
+            return
+                ((CurrentPerspective == CubePerspective.back) && (_newPerspective == CubePerspective.front)) ||
+                ((CurrentPerspective == CubePerspective.front) && (_newPerspective == CubePerspective.back)) ||
+                ((CurrentPerspective == CubePerspective.top) && (_newPerspective == CubePerspective.bottom)) ||
+                ((CurrentPerspective == CubePerspective.bottom) && (_newPerspective == CubePerspective.top)) ||
+                ((CurrentPerspective == CubePerspective.left) && (_newPerspective == CubePerspective.right)) ||
+                ((CurrentPerspective == CubePerspective.right) && (_newPerspective == CubePerspective.left));
         }
         private bool PerspectiveAllowed(CubePerspective newPerspective)
         {
@@ -158,9 +212,13 @@ namespace Sierra.PerspectiveSwitcher2D
             }
             return true;
         }
-        private void SetOrientationRefrenceTo(CubePerspective newPerspective)
+        private void SetCurrentPerspectiveTo(CubePerspective newPerspective)
         {
             CurrentPerspective = newPerspective;
+        }
+        private void SetNewPerspectiveTo(CubePerspective newPerspective)
+        {
+            _newPerspective = newPerspective;
         }
     }
 

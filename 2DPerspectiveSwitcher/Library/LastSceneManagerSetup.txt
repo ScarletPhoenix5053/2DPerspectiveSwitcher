@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Sierra/Scenes/Main.unity
+- path: Assets/_Main/Scenes/CameraTest.unity
   isLoaded: 1
   isActive: 1
