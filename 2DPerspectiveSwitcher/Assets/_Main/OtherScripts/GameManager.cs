@@ -10,12 +10,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             SetRandomCamPersp();
+            //SetAlternatingCamPersp(PerspectiveSwitcher.CubePerspective.back, PerspectiveSwitcher.CubePerspective.top);
         }
     }
 
+    private void SetCamPesp(PerspectiveSwitcher.CubePerspective newPerspective)
+    {
+        PerspectiveSwitcher.SetPerspective(newPerspective);
+    }
     private void SetRandomCamPersp()
     {
         int newPersp = UnityEngine.Random.Range(1, 7);

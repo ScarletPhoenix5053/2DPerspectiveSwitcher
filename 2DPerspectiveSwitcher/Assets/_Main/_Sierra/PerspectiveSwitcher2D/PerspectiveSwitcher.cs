@@ -121,25 +121,26 @@ namespace Sierra.PerspectiveSwitcher2D
                 // add option to default to clockwise/anticlockwise/overthetop motion?
 
                 // DEFAULT ROTATIONS, based on clockwise rotation, looking from behind/top
-                switch (CurrentPerspective)
+
+                switch (_newPerspective)
                 {
                     case CubePerspective.top:
-                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0.1f,0,0), SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.up * dist), target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
                         break;
                     case CubePerspective.bottom:
-                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.down * dist), target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
                         break;
                     case CubePerspective.left:
-                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0, 0, -0.1f), SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.left * dist), target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
                         break;
                     case CubePerspective.right:
-                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0, 0, 0.1f), SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.right * dist), target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
                         break;
                     case CubePerspective.back:
-                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(0.1f, 0, 0), SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.back * dist), target + new Vector3(-0.1f,0,0), SmoothTransitionDuration);
                         break;
                     case CubePerspective.front:
-                        Camera.PivotTo(target + Vector3.back * dist, target + new Vector3(-0.1f, 0, 0), SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.forward * dist), target + new Vector3(0.1f,0,0), SmoothTransitionDuration);
                         break;
                     default:
                         break;
@@ -148,25 +149,26 @@ namespace Sierra.PerspectiveSwitcher2D
             else 
             {
                 // If transition is 90 degrees: do not offset target
+
                 switch (_newPerspective)
                 {
                     case CubePerspective.top:
-                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.up * dist), target, SmoothTransitionDuration);
                         break;
                     case CubePerspective.bottom:
-                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.down * dist), target, SmoothTransitionDuration);
                         break;
                     case CubePerspective.left:
-                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.left * dist), target, SmoothTransitionDuration);
                         break;
                     case CubePerspective.right:
-                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.right * dist), target, SmoothTransitionDuration);
                         break;
                     case CubePerspective.back:
-                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.back * dist), target, SmoothTransitionDuration);
                         break;
                     case CubePerspective.front:
-                        Camera.PivotTo(target + Vector3.back * dist, target, SmoothTransitionDuration);
+                        Camera.PivotTo(target + (Vector3.forward * dist), target, SmoothTransitionDuration);
                         break;
                     default:
                         break;

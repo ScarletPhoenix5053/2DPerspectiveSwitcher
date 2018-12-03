@@ -65,13 +65,7 @@
     <Compile Include="Assets\_Main\_Sierra\PerspectiveSwitcher2D\PerspectiveSwitcher.cs" />
     <Compile Include="Assets\_Main\_Sierra\PerspectiveSwitcher2D\TrackerCamera.cs" />
     <Compile Include="Assets\_Main\OtherScripts\GameManager.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Core\Scripts\hInput.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Core\Scripts\hInputDetails.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Core\Scripts\hManager.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Core\Scripts\hScheme.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Core\Scripts\hUtility.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Example\Scripts\PlayerMover.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Example\Scripts\UI_RebindKey.cs" />
+    <Compile Include="Assets\_Main\OtherScripts\ProtoPlayer.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\CameraController.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\GUIControls.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\RPGCharacterControllerFREE.cs" />
@@ -140,7 +134,6 @@
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\MotionBlurClear.shader" />
-    <None Include="Assets\HardShellStudios\Complete Control\readme.txt" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\GrayscaleEffect.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\SepiaToneEffect.shader" />

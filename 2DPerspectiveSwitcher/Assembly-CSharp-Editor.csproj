@@ -62,8 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Main\OtherScripts\Editor\ReadonlyAttribute.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Core\Editor\hSchemeEditor.cs" />
-    <Compile Include="Assets\HardShellStudios\Complete Control\Core\Editor\hStyles.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/Internship/2DPerspectiveSwitcher/2DPerspectiveSwitcher/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
