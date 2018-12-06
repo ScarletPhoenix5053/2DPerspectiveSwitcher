@@ -65,7 +65,10 @@
     <Compile Include="Assets\_Main\_Sierra\PerspectiveSwitcher2D\PerspectiveSwitcher.cs" />
     <Compile Include="Assets\_Main\_Sierra\PerspectiveSwitcher2D\TrackerCamera.cs" />
     <Compile Include="Assets\_Main\OtherScripts\GameManager.cs" />
+    <Compile Include="Assets\_Main\OtherScripts\Hitbox.cs" />
     <Compile Include="Assets\_Main\OtherScripts\ProtoPlayer.cs" />
+    <Compile Include="Assets\_Main\OtherScripts\ReadonlyAttribute.cs" />
+    <Compile Include="Assets\_Main\OtherScripts\Utility.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\CameraController.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\GUIControls.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\RPGCharacterControllerFREE.cs" />
